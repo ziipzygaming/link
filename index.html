@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Fast link shortener and ad-shortener bypasser — place.qzz.io">
-<title>place — ziipzy.qzz.io/link</title>
+<title>place — place.qzz.io/link</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -19,13 +19,11 @@
     --border-lit: #263050;
     --accent: #0062ff;
     --accent-lo: rgba(0,98,255,0.12);
-    --accent-mid: rgba(0,98,255,0.25);
     --text: #cdd5e8;
     --text-muted: #4e5f80;
-    --text-faint: #232e47;
+    --text-faint: #1c2840;
     --ok: #00d68f;
     --err: #ff4e6a;
-    --warn: #ffc947;
     --mono: 'Space Mono', monospace;
     --display: 'Syne', sans-serif;
     --radius: 3px;
@@ -44,7 +42,6 @@
     overflow-x: hidden;
   }
 
-  /* grid bg */
   body::before {
     content: '';
     position: fixed;
@@ -58,7 +55,6 @@
     z-index: 0;
   }
 
-  /* scanlines */
   body::after {
     content: '';
     position: fixed;
@@ -71,7 +67,6 @@
     z-index: 1;
   }
 
-  /* ── HEADER ── */
   header {
     position: sticky;
     top: 0;
@@ -102,7 +97,6 @@
     border-radius: 50%;
     border: 2px solid var(--accent);
     display: flex; align-items: center; justify-content: center;
-    position: relative;
   }
 
   .logo-ring::after {
@@ -135,7 +129,6 @@
 
   .nav-links a:hover { color: var(--accent); }
 
-  /* ── HERO ── */
   .hero {
     position: relative;
     z-index: 2;
@@ -188,7 +181,6 @@
     line-height: 1.9;
   }
 
-  /* ── CARD ── */
   .card-wrap {
     position: relative;
     z-index: 2;
@@ -197,7 +189,6 @@
     padding: 0 1.4rem;
   }
 
-  /* tabs */
   .tabs {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -223,9 +214,7 @@
     transition: color 0.2s, background 0.2s;
   }
 
-  .tab-btn + .tab-btn {
-    border-left: 1px solid var(--border);
-  }
+  .tab-btn + .tab-btn { border-left: 1px solid var(--border); }
 
   .tab-btn.active {
     color: #fff;
@@ -245,7 +234,6 @@
     background: rgba(255,255,255,0.02);
   }
 
-  /* panel */
   .panel {
     display: none;
     background: var(--surface);
@@ -272,7 +260,6 @@
     border-bottom: 1px solid var(--border);
   }
 
-  /* form elements */
   .field-label {
     display: block;
     font-size: 10px;
@@ -318,7 +305,6 @@
   .alias-wrap {
     display: flex;
     align-items: center;
-    gap: 0;
     background: var(--bg);
     border: 1px solid var(--border);
     border-radius: var(--radius);
@@ -333,7 +319,7 @@
   }
 
   .alias-prefix {
-    font-size: 12px;
+    font-size: 11px;
     color: var(--text-muted);
     padding: 11px 12px;
     border-right: 1px solid var(--border);
@@ -355,7 +341,6 @@
 
   .alias-input::placeholder { color: var(--text-faint); }
 
-  /* buttons */
   .btn-primary {
     background: var(--accent);
     border: none;
@@ -375,6 +360,7 @@
 
   .btn-primary:hover { background: #1a74ff; }
   .btn-primary:active { transform: scale(0.96); background: #004fd6; }
+  .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
 
   .btn-ghost {
     background: none;
@@ -391,12 +377,8 @@
     transition: border-color 0.15s, color 0.15s;
   }
 
-  .btn-ghost:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-  }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
 
-  /* loading */
   .loading {
     display: none;
     align-items: center;
@@ -420,7 +402,6 @@
 
   @keyframes spin { to { transform: rotate(360deg); } }
 
-  /* error */
   .err-line {
     display: none;
     font-size: 11px;
@@ -432,7 +413,6 @@
   .err-line.show { display: block; }
   .err-line::before { content: '! '; }
 
-  /* result box */
   .result-box {
     display: none;
     background: var(--bg);
@@ -489,18 +469,9 @@
     border-top: 1px solid var(--border);
   }
 
-  .meta-kv {
-    font-size: 11px;
-    color: var(--text-muted);
-  }
+  .meta-kv { font-size: 11px; color: var(--text-muted); }
+  .meta-kv b { color: var(--text); font-weight: 400; margin-left: 4px; }
 
-  .meta-kv b {
-    color: var(--text);
-    font-weight: 400;
-    margin-left: 4px;
-  }
-
-  /* service pills */
   .service-list {
     display: flex;
     flex-wrap: wrap;
@@ -518,7 +489,6 @@
     letter-spacing: 0.04em;
   }
 
-  /* stats */
   .stats-row {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -530,11 +500,7 @@
     margin-top: 2rem;
   }
 
-  .stat-cell {
-    background: var(--surface);
-    padding: 16px 20px;
-    text-align: center;
-  }
+  .stat-cell { background: var(--surface); padding: 16px 20px; text-align: center; }
 
   .stat-n {
     display: block;
@@ -554,7 +520,6 @@
     text-transform: uppercase;
   }
 
-  /* footer */
   footer {
     position: relative;
     z-index: 2;
@@ -570,20 +535,10 @@
     letter-spacing: 0.05em;
   }
 
-  footer a {
-    color: var(--text-muted);
-    text-decoration: none;
-    transition: color 0.15s;
-  }
-
+  footer a { color: var(--text-muted); text-decoration: none; transition: color 0.15s; }
   footer a:hover { color: var(--accent); }
+  .footer-links { display: flex; gap: 1.4rem; }
 
-  .footer-links {
-    display: flex;
-    gap: 1.4rem;
-  }
-
-  /* toast */
   .toast {
     position: fixed;
     bottom: 2rem;
@@ -603,12 +558,8 @@
     white-space: nowrap;
   }
 
-  .toast.show {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-  /* page entry animation */
   .fade-up {
     opacity: 0;
     transform: translateY(18px);
@@ -619,11 +570,8 @@
   .fade-up:nth-child(2) { animation-delay: 0.15s; }
   .fade-up:nth-child(3) { animation-delay: 0.25s; }
 
-  @keyframes fadeUp {
-    to { opacity: 1; transform: translateY(0); }
-  }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
-  /* responsive */
   @media (max-width: 540px) {
     header { padding: 1rem 1.2rem; }
     .nav-links { display: none; }
@@ -632,7 +580,6 @@
     .input-row { flex-direction: column; }
     .btn-primary { width: 100%; text-align: center; }
     .stats-row { grid-template-columns: 1fr; }
-    .stat-n { font-size: 1.4rem; }
     footer { flex-direction: column; align-items: flex-start; }
   }
 </style>
@@ -640,13 +587,13 @@
 <body>
 
 <header>
-  <a class="logo" href="https://ziipzy.qzz.io">
+  <a class="logo" href="https://place.qzz.io">
     <div class="logo-ring"></div>
-    ziipzy.qzz.io
+    place.qzz.io
   </a>
   <ul class="nav-links">
-    <li><a href="#" onclick="switchTab('shorten', document.querySelectorAll('.tab-btn')[0])">Shorten</a></li>
-    <li><a href="#" onclick="switchTab('bypass', document.querySelectorAll('.tab-btn')[1])">Bypass</a></li>
+    <li><a href="#" onclick="switchTab('shorten',document.querySelectorAll('.tab-btn')[0]);return false;">Shorten</a></li>
+    <li><a href="#" onclick="switchTab('bypass',document.querySelectorAll('.tab-btn')[1]);return false;">Bypass</a></li>
     <li><a href="https://github.com/ziipzy" target="_blank">GitHub ↗</a></li>
   </ul>
 </header>
@@ -672,7 +619,7 @@
   <!-- SHORTEN -->
   <div class="panel active" id="panel-shorten">
     <p class="panel-desc">
-      Paste any long URL — get a clean short link at <code style="color:var(--accent)">ziipzy.qzz.io/link/go/&lt;code&gt;</code>.<br>
+      Paste any long URL — get a clean short link at <code style="color:var(--accent)">place.qzz.io/link/go/&lt;code&gt;</code>.<br>
       Set a custom alias or leave blank to auto-generate one.
     </p>
 
@@ -680,12 +627,12 @@
     <div class="input-row">
       <input class="url-input" id="shorten-input" type="url"
         placeholder="https://example.com/very/long/url/here" autocomplete="off" spellcheck="false" />
-      <button class="btn-primary" onclick="doShorten()">Shorten →</button>
+      <button class="btn-primary" id="shorten-btn" onclick="doShorten()">Shorten →</button>
     </div>
 
     <label class="field-label">Custom alias <small>(optional)</small></label>
     <div class="alias-wrap">
-      <span class="alias-prefix">ziipzy.qzz.io/link/go/</span>
+      <span class="alias-prefix">place.qzz.io/link/go/</span>
       <input class="alias-input" id="alias-input" type="text"
         placeholder="my-link" maxlength="32" autocomplete="off" spellcheck="false" />
     </div>
@@ -694,12 +641,12 @@
       <div class="spinner"></div>
       <span>generating short link...</span>
     </div>
-    <div class="err-line" id="shorten-err">invalid url — must start with https://</div>
+    <div class="err-line" id="shorten-err"></div>
 
     <div class="result-box" id="shorten-result">
       <div class="result-top">
         <div class="status-pill"><div class="status-dot"></div>Link created</div>
-        <button class="btn-ghost" onclick="copyText('shorten-url-text')">Copy</button>
+        <button class="btn-ghost" onclick="copyResult('shorten-url')">Copy</button>
       </div>
       <a class="result-url" id="shorten-url" href="#" target="_blank" rel="noopener"></a>
       <div class="result-meta">
@@ -733,19 +680,19 @@
     <div class="input-row">
       <input class="url-input" id="bypass-input" type="url"
         placeholder="https://adf.ly/abc123" autocomplete="off" spellcheck="false" />
-      <button class="btn-primary" onclick="doBypass()">Bypass →</button>
+      <button class="btn-primary" id="bypass-btn" onclick="doBypass()">Bypass →</button>
     </div>
 
     <div class="loading" id="bypass-loading">
       <div class="spinner"></div>
       <span id="bypass-msg">resolving redirect chain...</span>
     </div>
-    <div class="err-line" id="bypass-err">could not resolve — unsupported or invalid url</div>
+    <div class="err-line" id="bypass-err"></div>
 
     <div class="result-box" id="bypass-result">
       <div class="result-top">
         <div class="status-pill"><div class="status-dot"></div>Destination found</div>
-        <button class="btn-ghost" onclick="copyText('bypass-url-text')">Copy</button>
+        <button class="btn-ghost" onclick="copyResult('bypass-url')">Copy</button>
       </div>
       <a class="result-url" id="bypass-url" href="#" target="_blank" rel="noopener noreferrer"></a>
       <div class="result-meta">
@@ -756,7 +703,6 @@
     </div>
   </div>
 
-  <!-- stats -->
   <div class="stats-row">
     <div class="stat-cell">
       <span class="stat-n" id="stat-links">0</span>
@@ -774,10 +720,9 @@
 </div>
 
 <footer>
-  <span>place · <a href="https://ziipzy.qzz.io">ziipzy.qzz.io</a> · built by <a href="https://github.com/ziipzy" target="_blank">ziipzy</a></span>
+  <span>place · <a href="https://place.qzz.io">place.qzz.io</a> · built by <a href="https://github.com/ziipzy" target="_blank">ziipzy</a></span>
   <div class="footer-links">
     <a href="https://github.com/ziipzy" target="_blank">GitHub</a>
-    <a href="mailto:">Contact</a>
     <a href="/404.html">404</a>
   </div>
 </footer>
@@ -785,10 +730,8 @@
 <div class="toast" id="toast"></div>
 
 <script>
-  /* ── state ── */
   let linkCount = 0, bypassCount = 0, totalMs = 0, bypassRuns = 0;
 
-  /* ── tabs ── */
   function switchTab(name, btn) {
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
     document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
@@ -796,16 +739,9 @@
     document.getElementById('panel-' + name).classList.add('active');
   }
 
-  /* ── helpers ── */
   function isUrl(s) {
     try { return /^https?:\/\/.+/.test(s) && Boolean(new URL(s)); }
     catch { return false; }
-  }
-
-  function randCode(n) {
-    const alpha = 'abcdefghijkmnpqrstuvwxyz23456789';
-    return Array.from(crypto.getRandomValues(new Uint8Array(n)))
-      .map(b => alpha[b % alpha.length]).join('');
   }
 
   function showToast(msg) {
@@ -815,64 +751,65 @@
     setTimeout(() => t.classList.remove('show'), 2400);
   }
 
-  function copyText(id) {
+  function copyResult(id) {
     const el = document.getElementById(id);
-    const text = el ? el.textContent : '';
+    const text = el.href && el.href !== window.location.href ? el.href : el.textContent;
     navigator.clipboard.writeText(text).then(() => showToast('copied to clipboard ✓'));
   }
 
-  function hide(...ids) { ids.forEach(id => document.getElementById(id)?.classList.remove('show')); }
-  function show(...ids) { ids.forEach(id => document.getElementById(id)?.classList.add('show')); }
+  function setEl(id, val) { document.getElementById(id).textContent = val; }
+  function showEl(id) { document.getElementById(id).classList.add('show'); }
+  function hideEl(id) { document.getElementById(id).classList.remove('show'); }
 
-  /* ── shorten ── */
   async function doShorten() {
     const inp = document.getElementById('shorten-input').value.trim();
-    const alias = document.getElementById('alias-input').value.trim().replace(/[^a-z0-9\-_]/gi,'');
+    const alias = document.getElementById('alias-input').value.trim().replace(/[^a-z0-9\-_]/gi, '');
+    const btn = document.getElementById('shorten-btn');
+    const errEl = document.getElementById('shorten-err');
 
-    hide('shorten-err', 'shorten-result');
-    if (!isUrl(inp)) { show('shorten-err'); return; }
+    hideEl('shorten-err');
+    hideEl('shorten-result');
 
-    show('shorten-loading');
-
-    /* ── REPLACE THIS BLOCK with real fetch() when backend is ready ──
-    const res = await fetch('/api/shorten', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ url: inp, alias: alias || undefined })
-    });
-    const data = await res.json();
-    ── END REPLACE ── */
-
-    await sleep(900);
-    const code = alias || randCode(6);
-    const data = { short: `https://ziipzy.qzz.io/link/go/${code}` };
-    /* ── END MOCK ── */
-
-    hide('shorten-loading');
-
-    const urlEl = document.getElementById('shorten-url');
-    urlEl.id = 'shorten-url';
-    urlEl.href = data.short;
-    urlEl.textContent = data.short;
-    urlEl.id = 'shorten-url';
-
-    // hidden span for copy
-    let span = document.getElementById('shorten-url-text');
-    if (!span) {
-      span = document.createElement('span');
-      span.id = 'shorten-url-text';
-      span.style.display = 'none';
-      urlEl.parentNode.appendChild(span);
+    if (!isUrl(inp)) {
+      errEl.textContent = 'invalid url — must start with https://';
+      showEl('shorten-err');
+      return;
     }
-    span.textContent = data.short;
 
-    document.getElementById('shorten-ts').textContent = ' ' + new Date().toLocaleTimeString();
-    show('shorten-result');
-    linkCount++;
-    document.getElementById('stat-links').textContent = linkCount;
+    showEl('shorten-loading');
+    btn.disabled = true;
+
+    try {
+      const res = await fetch('/link/api/shorten', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url: inp, alias: alias || undefined })
+      });
+      const data = await res.json();
+
+      if (data.error) {
+        errEl.textContent = data.error;
+        showEl('shorten-err');
+        return;
+      }
+
+      const urlEl = document.getElementById('shorten-url');
+      urlEl.href = data.short;
+      urlEl.textContent = data.short;
+      setEl('shorten-ts', ' ' + new Date().toLocaleTimeString());
+      showEl('shorten-result');
+      linkCount++;
+      setEl('stat-links', linkCount);
+
+    } catch (e) {
+      errEl.textContent = 'network error — check your connection and try again';
+      showEl('shorten-err');
+    } finally {
+      hideEl('shorten-loading');
+      btn.disabled = false;
+    }
   }
 
-  /* ── bypass ── */
   const bypassMsgs = [
     'fetching page...',
     'resolving redirect chain...',
@@ -882,76 +819,71 @@
 
   async function doBypass() {
     const inp = document.getElementById('bypass-input').value.trim();
-    hide('bypass-err', 'bypass-result');
-    if (!isUrl(inp)) { show('bypass-err'); return; }
+    const btn = document.getElementById('bypass-btn');
+    const errEl = document.getElementById('bypass-err');
 
-    show('bypass-loading');
-    const msgEl = document.getElementById('bypass-msg');
-    let mi = 0;
-    const tick = setInterval(() => { if(mi < bypassMsgs.length) msgEl.textContent = bypassMsgs[mi++]; }, 480);
+    hideEl('bypass-err');
+    hideEl('bypass-result');
 
-    /* ── REPLACE THIS BLOCK with real fetch() when backend is ready ──
-    const start = Date.now();
-    const res = await fetch('/api/bypass', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ url: inp })
-    });
-    const data = await res.json();
-    const elapsed = Date.now() - start;
-    ── END REPLACE ── */
-
-    const start = Date.now();
-    await sleep(1400 + Math.random() * 700);
-    const dests = [
-      'https://mega.nz/file/examplefilekey',
-      'https://drive.google.com/file/d/1abc_example/view',
-      'https://github.com/ziipzy/ava-os/releases/latest',
-      'https://mediafire.com/file/xyz/example/file/view'
-    ];
-    const data = {
-      destination: dests[Math.floor(Math.random() * dests.length)],
-      hops: Math.floor(Math.random() * 4) + 2,
-      source: (() => { try { return new URL(inp).hostname; } catch { return inp; } })()
-    };
-    const elapsed = Date.now() - start;
-    /* ── END MOCK ── */
-
-    clearInterval(tick);
-    hide('bypass-loading');
-
-    const urlEl = document.getElementById('bypass-url');
-    urlEl.href = data.destination;
-    urlEl.textContent = data.destination;
-
-    let span = document.getElementById('bypass-url-text');
-    if (!span) {
-      span = document.createElement('span');
-      span.id = 'bypass-url-text';
-      span.style.display = 'none';
-      urlEl.parentNode.appendChild(span);
+    if (!isUrl(inp)) {
+      errEl.textContent = 'invalid url — must start with https://';
+      showEl('bypass-err');
+      return;
     }
-    span.textContent = data.destination;
 
-    document.getElementById('bypass-hops').textContent = ' ' + data.hops;
-    document.getElementById('bypass-src').textContent = ' ' + data.source;
-    document.getElementById('bypass-time').textContent = ' ' + elapsed;
-    show('bypass-result');
+    showEl('bypass-loading');
+    btn.disabled = true;
 
-    bypassCount++;
-    bypassRuns++;
-    totalMs += elapsed;
-    document.getElementById('stat-bypass').textContent = bypassCount;
-    document.getElementById('stat-avg').textContent = Math.round(totalMs / bypassRuns);
+    let mi = 0;
+    const msgEl = document.getElementById('bypass-msg');
+    const tick = setInterval(() => {
+      if (mi < bypassMsgs.length) msgEl.textContent = bypassMsgs[mi++];
+    }, 500);
+
+    const start = Date.now();
+
+    try {
+      const res = await fetch('/link/api/bypass', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url: inp })
+      });
+      const data = await res.json();
+      const elapsed = Date.now() - start;
+
+      if (data.error) {
+        errEl.textContent = data.error;
+        showEl('bypass-err');
+        return;
+      }
+
+      const urlEl = document.getElementById('bypass-url');
+      urlEl.href = data.destination;
+      urlEl.textContent = data.destination;
+      setEl('bypass-hops', ' ' + data.hops);
+      setEl('bypass-src', ' ' + data.source);
+      setEl('bypass-time', ' ' + elapsed);
+      showEl('bypass-result');
+
+      bypassCount++;
+      bypassRuns++;
+      totalMs += elapsed;
+      setEl('stat-bypass', bypassCount);
+      setEl('stat-avg', Math.round(totalMs / bypassRuns));
+
+    } catch (e) {
+      errEl.textContent = 'network error — check your connection and try again';
+      showEl('bypass-err');
+    } finally {
+      clearInterval(tick);
+      hideEl('bypass-loading');
+      btn.disabled = false;
+    }
   }
 
-  /* ── keyboard enter ── */
   document.getElementById('shorten-input').addEventListener('keydown', e => { if (e.key === 'Enter') doShorten(); });
-  document.getElementById('bypass-input').addEventListener('keydown', e => { if (e.key === 'Enter') doBypass(); });
   document.getElementById('alias-input').addEventListener('keydown', e => { if (e.key === 'Enter') doShorten(); });
-
-  /* ── util ── */
-  function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+  document.getElementById('bypass-input').addEventListener('keydown', e => { if (e.key === 'Enter') doBypass(); });
 </script>
 </body>
 </html>
